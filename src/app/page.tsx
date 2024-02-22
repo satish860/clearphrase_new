@@ -7,15 +7,22 @@ import {
   Facebook,
   Linkedin,
 } from "lucide-react";
+import { SignIn } from "@clerk/nextjs";
+import { UserButton, auth, SignUpButton } from "@clerk/nextjs";
 
 export default function Home() {
+  const { userId } = auth();
   return (
     <div className="w-full h-full p-2">
       <div className="flex justify-between items-center">
         <img src="/aj_logo_21_09_2023 2 (3).svg" className="w-20 h-10"></img>
-        <button className="w-28 h-10 bg-green-400 text-white rounded-full">
-          Sign-up
-        </button>
+        {userId ? (
+          <UserButton afterSignOutUrl="/" />
+        ) : (
+          <div className="w-28 h-10 bg-green-400 rounded-full flex justify-center items-center text-white">
+            <SignUpButton afterSignUpUrl="/" afterSignInUrl="/"></SignUpButton>
+          </div>
+        )}
       </div>
       <div className="flex flex-col h-[600px]  justify-center items-center space-y-10">
         <div className="space-y-2 text-center">
@@ -23,7 +30,9 @@ export default function Home() {
           <h1 className="text-6xl font-sans text-green-400">
             Take control of your
           </h1>
-          <h1 className="text-6xl font-sans text-green-400">writing&#39;s tone!</h1>
+          <h1 className="text-6xl font-sans text-green-400">
+            writing&#39;s tone!
+          </h1>
         </div>
         <div className="text-center pt-5 space-y-1">
           <p>
@@ -53,16 +62,16 @@ export default function Home() {
           <Chrome className="text-green-400 w-10 h-10" />
           <h1>Web Interface</h1>
           <h2>
-            With Clearphrase&#39;s Chrome extension, you can seamlessly edit your
-            tone without ever leaving your browser.
+            With Clearphrase&#39;s Chrome extension, you can seamlessly edit
+            your tone without ever leaving your browser.
           </h2>
         </div>
         <div className="h-full w-[30%] space-y-4">
           <Tv2 className="text-green-400 w-10 h-10" />
           <h1>Web Interface</h1>
           <h2>
-            Clearphrase&#39;s context menu integration on Windows lets you quickly
-            adjust your tone within your favourite writing apps.
+            Clearphrase&#39;s context menu integration on Windows lets you
+            quickly adjust your tone within your favourite writing apps.
           </h2>
         </div>
       </div>
