@@ -23,7 +23,7 @@ export default function Home() {
           <h1 className="text-6xl font-sans text-green-400">
             Take control of your
           </h1>
-          <h1 className="text-6xl font-sans text-green-400">writing's tone!</h1>
+          <h1 className="text-6xl font-sans text-green-400">writing&#39;s tone!</h1>
         </div>
         <div className="text-center pt-5 space-y-1">
           <p>
@@ -39,29 +39,30 @@ export default function Home() {
           <a>learn more</a>
         </div>
       </div>
-      <div className="h-52 w-full flex justify-center items-center pt-2 ">
+      <div className="h-52 w-full flex justify-center items-center pt-2 gap-8">
         <div className="h-full w-[30%] space-y-4">
           <LayoutDashboard className="text-green-400 w-10 h-10" />
           <h1>Web Interface</h1>
           <h2>
-            Clearphrase's intuitive web interface makes it easy to adjust the
-            tone of your writing from any device with an internet connection.
+            Clearphrase&#39;s intuitive web interface makes it easy to adjust
+            the tone of your writing from any device with an internet
+            connection.
           </h2>
         </div>
         <div className="h-full w-[30%] space-y-4">
           <Chrome className="text-green-400 w-10 h-10" />
           <h1>Web Interface</h1>
           <h2>
-            Clearphrase's intuitive web interface makes it easy to adjust the
-            tone of your writing from any device with an internet connection.
+            With Clearphrase&#39;s Chrome extension, you can seamlessly edit your
+            tone without ever leaving your browser.
           </h2>
         </div>
         <div className="h-full w-[30%] space-y-4">
           <Tv2 className="text-green-400 w-10 h-10" />
           <h1>Web Interface</h1>
           <h2>
-            Clearphrase's intuitive web interface makes it easy to adjust the
-            tone of your writing from any device with an internet connection.
+            Clearphrase&#39;s context menu integration on Windows lets you quickly
+            adjust your tone within your favourite writing apps.
           </h2>
         </div>
       </div>
@@ -72,8 +73,8 @@ export default function Home() {
             We have been working with users from various fields
           </p>
         </div>
-        <div className="flex justify-center items-center w-full h-full gap-2">
-          <div className="w-[32%] h-full flex flex-col justify-center items-center space-y-6">
+        <div className="flex justify-center items-center w-full h-full gap-8">
+          <div className="w-[30%] h-full flex flex-col justify-center items-center space-y-6">
             <div className="w-full h-[60%] flex flex-col justify-center items-center bg-white rounded-md text-sm">
               <h1 className="font-bold text-lg pb-4">Great Job!</h1>
               <p>The mode option appears to be a cool</p>
@@ -85,7 +86,7 @@ export default function Home() {
               className="rounded-full h-10 w-10"
             ></img>
           </div>
-          <div className="w-[32%] h-full flex flex-col justify-center items-center space-y-6">
+          <div className="w-[30%] h-full flex flex-col justify-center items-center space-y-6">
             <div className="w-full h-[60%] flex flex-col justify-center items-center bg-white rounded-md text-sm">
               <h1 className="font-bold  text-lg  pb-4">
                 Intuitive Replacement
@@ -99,7 +100,7 @@ export default function Home() {
               className="rounded-full h-10 w-10"
             ></img>
           </div>
-          <div className="w-[32%] h-full flex flex-col justify-center items-center space-y-6">
+          <div className="w-[30%] h-full flex flex-col justify-center items-center space-y-6">
             <div className="w-full h-[60%] flex flex-col justify-center items-center bg-white rounded-md text-sm">
               <h1 className="font-bold  text-lg  pb-4">
                 Confident Communication
