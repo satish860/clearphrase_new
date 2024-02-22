@@ -42,7 +42,7 @@ export default function Home() {
           <p>content that captivates your audience.</p>
         </div>
         <div className="flex flex-col space-y-2 justify-center items-center mt-2">
-          <a className="w-28 h-10 bg-green-400 text-white rounded-full flex justify-center items-center">
+          <a className="w-28 h-10 bg-green-400 text-white rounded-full flex justify-center items-center" href="/pharsher">
             Get started
           </a>
           <a>learn more</a>
