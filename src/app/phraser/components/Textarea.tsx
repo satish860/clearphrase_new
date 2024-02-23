@@ -37,7 +37,7 @@ const TextBox = () => {
   };
 
   return (
-    <div className="w-[90%] h-full bg-gray-100">
+    <div className="w-[90%] h-full bg-white">
       <div className="w-full h-[15%] pt-4 hidden md:block">
         <div className="flex justify-between items-center pl-4 pr-4">
           <div className="space-x-8">

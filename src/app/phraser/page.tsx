@@ -3,12 +3,9 @@ import TextBox from "./components/Textarea";
 
 const Pharser = () => {
   return (
-    <div className="h-screen w-full">
-      <div className="flex justify-between items-center pl-4 pr-4">
-        <img
-          src="/aj_logo_21_09_2023 2 (3).svg"
-          className="w-20 md:h-20 h-14"
-        ></img>
+    <div className="h-screen w-full bg-gray-200">
+      <div className="flex justify-between items-center pl-4 pr-4 md:h-20 h-14">
+       <h1 className="text-xl">ClearPhrase.io</h1>
         <UserButton />
       </div>
       <div className="flex justify-center items-center w-full h-[80%]">
