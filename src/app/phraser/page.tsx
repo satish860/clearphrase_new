@@ -1,12 +1,7 @@
 import { UserButton } from "@clerk/nextjs";
-import { Copy } from "lucide-react";
-import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
+import TextBox from "./components/Textarea";
 
-import { Separator } from "@/components/ui/separator";
-import TextArea from "../components/Textarea";
-
-const Pharsher = () => {
+const Pharser = () => {
   return (
     <div className="h-screen w-full">
       <div className="flex justify-between items-center pl-4 pr-4">
@@ -17,10 +12,10 @@ const Pharsher = () => {
         <UserButton />
       </div>
       <div className="flex justify-center items-center w-full h-[80%]">
-        <TextArea />
+        <TextBox />
       </div>
     </div>
   );
 };
 
-export default Pharsher;
+export default Pharser;

@@ -2,7 +2,6 @@
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import React, { useState } from "react";
-import axios from "axios";
 import { Copy } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -13,22 +12,29 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useCompletion } from "ai/react";
 
-const TextArea = () => {
-  const [text1, setText1] = useState("");
-  const [selectedTone, setSelectedTone] = useState("");
+const TextBox = () => {
+  const [text, setText] = useState("");
+  const [selectedTone, setSelectedTone] = useState("Standard");
+  const { complete, completion, isLoading, setCompletion } = useCompletion({
+    api: "/api/phraser",
+  });
 
   const handleToneSelect = (tone: string) => {
     setSelectedTone(tone);
   };
 
-//   const handleParaphrase = async () => {
-//     const response = await axios.post("api/Textarea", {
-//       Question: text1,
-//       Tones:selectedTone,
-//     });
-//     console.log(response.data);
-//   };
+  const handleParaphrase = () => {
+    console.log(text);
+    console.log(selectedTone);
+    complete(
+      JSON.stringify({
+        text: text,
+        tone: selectedTone,
+      })
+    );
+  };
 
   return (
     <div className="w-[90%] h-full bg-gray-100">
@@ -95,19 +101,23 @@ const TextArea = () => {
       <div className="w-full md:h-[75%] h-full flex flex-col md:flex-row gap-1">
         <Textarea
           className="md:w-[50%] h-[50%] md:h-full w-full"
-          value={text1}
-          onChange={(e) => setText1(e.target.value)}
+          value={text}
+          onChange={(e) => setText(e.target.value)}
         />
-        <Textarea className="md:w-[50%] h-[50%] md:h-full w-full" />
+        <Textarea
+          className="md:w-[50%] h-[50%] md:h-full w-full"
+          value={completion}
+          readOnly={true}
+        />
       </div>
       <div className="w-full flex items-center justify-center gap-10 pt-2">
-        <Button className="bg-green-500">
-          Parapharse
+        <Button className="bg-green-500"  onClick={handleParaphrase}>
+          Paraphrase
         </Button>
-        <Button variant={"secondary"}>Clearall</Button>
+        <Button variant={"secondary"}>Clear all</Button>
       </div>
     </div>
   );
 };
 
-export default TextArea;
+export default TextBox;

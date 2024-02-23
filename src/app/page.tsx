@@ -7,7 +7,6 @@ import {
   Facebook,
   Linkedin,
 } from "lucide-react";
-import { SignIn } from "@clerk/nextjs";
 import { UserButton, auth, SignUpButton } from "@clerk/nextjs";
 
 export default function Home() {
@@ -42,7 +41,7 @@ export default function Home() {
           <p>content that captivates your audience.</p>
         </div>
         <div className="flex flex-col space-y-2 justify-center items-center mt-2">
-          <a className="w-28 h-10 bg-green-400 text-white rounded-full flex justify-center items-center" href="/pharsher">
+          <a className="w-28 h-10 bg-green-400 text-white rounded-full flex justify-center items-center" href="/phraser">
             Get started
           </a>
           <a>learn more</a>
