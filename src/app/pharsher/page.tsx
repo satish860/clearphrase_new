@@ -11,6 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Separator } from "@/components/ui/separator";
+import TextArea from "../components/Textarea";
 
 const Pharsher = () => {
   return (
@@ -66,14 +67,7 @@ const Pharsher = () => {
               </div>
             </div>
           </div>
-          <div className="w-full md:h-[75%] h-full flex flex-col md:flex-row gap-1">
-            <Textarea className="md:w-[50%] h-[50%] md:h-full w-full" />
-            <Textarea className="md:w-[50%] h-[50%] md:h-full w-full" />
-          </div>
-          <div className="w-full flex items-center justify-center gap-10 pt-2">
-            <Button className="bg-green-500">Parapharse</Button>
-            <Button variant={"secondary"}>Clearall</Button>
-          </div>
+          <TextArea />
         </div>
       </div>
     </div>
