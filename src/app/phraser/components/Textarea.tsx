@@ -35,6 +35,12 @@ const TextBox = () => {
       })
     );
   };
+  const handleClearAll = () => {
+    setText("");
+  };
+  const handleCopyText = () => {
+    navigator.clipboard.writeText(completion);
+  };
 
   return (
     <div className="w-[90%] h-full bg-white">
@@ -42,22 +48,67 @@ const TextBox = () => {
         <div className="flex justify-between items-center pl-4 pr-4">
           <div className="space-x-8">
             <span>Tones:</span>
-            <button onClick={() => handleToneSelect("Standard")}>
+            <button
+              onClick={() => handleToneSelect("Standard")}
+              style={{
+                borderBottom:
+                  selectedTone === "Standard" ? "2px solid green" : "none",
+              }}
+            >
               Standard
             </button>
-            <button onClick={() => handleToneSelect("Fluency")}>Fluency</button>
-            <button onClick={() => handleToneSelect("Formal")}>Formal</button>
-            <button onClick={() => handleToneSelect("Simple")}>Simple</button>
-            <button onClick={() => handleToneSelect("Creative")}>
+            <button
+              onClick={() => handleToneSelect("Fluency")}
+              style={{
+                borderBottom:
+                  selectedTone === "Fluency" ? "2px solid green" : "none",
+              }}
+            >
+              Fluency
+            </button>
+            <button
+              onClick={() => handleToneSelect("Formal")}
+              style={{
+                borderBottom:
+                  selectedTone === "Formal" ? "2px solid green" : "none",
+              }}
+            >
+              Formal
+            </button>
+            <button
+              onClick={() => handleToneSelect("Simple")}
+              style={{
+                borderBottom:
+                  selectedTone === "Simple" ? "2px solid green" : "none",
+              }}
+            >
+              Simple
+            </button>
+            <button
+              onClick={() => handleToneSelect("Creative")}
+              style={{
+                borderBottom:
+                  selectedTone === "Creative" ? "2px solid green" : "none",
+              }}
+            >
               Creative
             </button>
-            <button onClick={() => handleToneSelect("Summarize")}>
+            <button
+              onClick={() => handleToneSelect("Summarize")}
+              style={{
+                borderBottom:
+                  selectedTone === "Summarize" ? "2px solid green" : "none",
+              }}
+            >
               Summarize
             </button>
           </div>
-          <div className="w-10 h-10 bg-gray-200 flex justify-center items-center rounded-md">
+          <button
+            className="w-10 h-10 bg-gray-200 flex justify-center items-center rounded-md"
+            onClick={handleCopyText}
+          >
             <Copy />
-          </div>
+          </button>
         </div>
         <Separator className="w-full mt-4" />
       </div>
@@ -93,7 +144,10 @@ const TextBox = () => {
               <DropdownMenuSeparator />
             </DropdownMenuContent>
           </DropdownMenu>
-          <div className="w-10 h-10 bg-gray-100 flex justify-center items-center rounded-md">
+          <div
+            className="w-10 h-10 bg-gray-100 flex justify-center items-center rounded-md"
+            onClick={handleCopyText}
+          >
             <Copy />
           </div>
         </div>
@@ -111,10 +165,12 @@ const TextBox = () => {
         />
       </div>
       <div className="w-full flex items-center justify-center gap-10 pt-2">
-        <Button className="bg-green-500"  onClick={handleParaphrase}>
+        <Button className="bg-green-500" onClick={handleParaphrase}>
           Paraphrase
         </Button>
-        <Button variant={"secondary"}>Clear all</Button>
+        <Button variant={"secondary"} onClick={handleClearAll}>
+          Clear all
+        </Button>
       </div>
     </div>
   );
