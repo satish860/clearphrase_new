@@ -22,13 +22,13 @@ const TextArea = () => {
     setSelectedTone(tone);
   };
 
-  const handleParaphrase = async () => {
-    const response = await axios.post("api/Textarea", {
-      Question: text1,
-      Tones:selectedTone,
-    });
-    console.log(response.data);
-  };
+//   const handleParaphrase = async () => {
+//     const response = await axios.post("api/Textarea", {
+//       Question: text1,
+//       Tones:selectedTone,
+//     });
+//     console.log(response.data);
+//   };
 
   return (
     <div className="w-[90%] h-full bg-gray-100">
@@ -101,7 +101,7 @@ const TextArea = () => {
         <Textarea className="md:w-[50%] h-[50%] md:h-full w-full" />
       </div>
       <div className="w-full flex items-center justify-center gap-10 pt-2">
-        <Button className="bg-green-500" onClick={handleParaphrase}>
+        <Button className="bg-green-500">
           Parapharse
         </Button>
         <Button variant={"secondary"}>Clearall</Button>
