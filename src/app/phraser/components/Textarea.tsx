@@ -15,8 +15,9 @@ import {
 import { useCompletion } from "ai/react";
 
 const TextBox = () => {
-  const [text, setText] = useState("");
+  const [text, setText] = useState('');
   const [selectedTone, setSelectedTone] = useState("Standard");
+  const [text2, setText2] = useState('');
   const { complete, completion, isLoading, setCompletion } = useCompletion({
     api: "/api/phraser",
   });
@@ -36,14 +37,15 @@ const TextBox = () => {
     );
   };
   const handleClearAll = () => {
-    setText("");
+    setText('');
+    setCompletion('');
   };
   const handleCopyText = () => {
     navigator.clipboard.writeText(completion);
   };
 
   return (
-    <div className="w-[90%] h-full bg-white">
+    <div className="w-[90%] h-full  bg-white">
       <div className="w-full h-[15%] pt-4 hidden md:block">
         <div className="flex justify-between items-center pl-4 pr-4">
           <div className="space-x-8">
@@ -152,7 +154,7 @@ const TextBox = () => {
           </div>
         </div>
       </div>
-      <div className="w-full md:h-[75%] h-full flex flex-col md:flex-row gap-1">
+      <div className="w-full md:h-[75%] h-full flex flex-col md:flex-row gap-1 p-2">
         <Textarea
           className="md:w-[50%] h-[50%] md:h-full w-full"
           value={text}
@@ -162,13 +164,14 @@ const TextBox = () => {
           className="md:w-[50%] h-[50%] md:h-full w-full"
           value={completion}
           readOnly={true}
+          onChange={(e) => setText2(e.target.value)}
         />
       </div>
       <div className="w-full flex items-center justify-center gap-10 pt-2">
         <Button className="bg-green-500" onClick={handleParaphrase}>
           Paraphrase
         </Button>
-        <Button variant={"secondary"} onClick={handleClearAll}>
+        <Button variant={"secondary"} onClick={handleClearAll} className="border border-black">
           Clear all
         </Button>
       </div>
