@@ -156,6 +156,7 @@ const TextBox = () => {
           className="md:w-[50%] h-[50%] md:h-full w-full"
           value={text}
           onChange={(e) => setText(e.target.value)}
+          onPaste={(e) => setText(e.clipboardData.getData('text/plain'))}
         />
         <Textarea
           className="md:w-[50%] h-[40%] md:h-full w-full"
