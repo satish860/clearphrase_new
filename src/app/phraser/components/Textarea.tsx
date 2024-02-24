@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { CheckIcon, Copy } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { useCompletion } from "ai/react";
-import { ChevronsDown } from 'lucide-react';
+import { ChevronsDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   Command,
@@ -19,25 +19,26 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { Check } from "lucide-react";
 
 const TextBox = () => {
   const [text, setText] = useState("");
   const [selectedTone, setSelectedTone] = useState("Standard");
   const [text2, setText2] = useState("");
-  const [open, setOpen] = React.useState(false)
-  const [value, setValue] = React.useState("")
+  const [open, setOpen] = React.useState(false);
+  const [value, setValue] = React.useState("");
+  const [isCopied, setIsCopied] = useState(false);
   const { complete, completion, isLoading, setCompletion } = useCompletion({
     api: "/api/phraser",
   });
 
   const onPaste = (e: React.ClipboardEvent<HTMLTextAreaElement>) => {
-    e.preventDefault(); 
-    const pastedText = e.clipboardData.getData('text/plain');
+    e.preventDefault();
+    const pastedText = e.clipboardData.getData("text/plain");
     console.log(pastedText);
     setText(pastedText);
     handleParaphrase(selectedTone);
-  }
-
+  };
 
   const handleToneSelect = (tone: string) => {
     setSelectedTone(tone);
@@ -62,6 +63,10 @@ const TextBox = () => {
 
   const handleCopyText = () => {
     navigator.clipboard.writeText(completion);
+    setIsCopied(true);
+    setTimeout(() => {
+      setIsCopied(false);
+    }, 5000);
   };
 
   const toneOptions = [
@@ -96,7 +101,7 @@ const TextBox = () => {
             className="w-10 h-10 bg-gray-200 flex justify-center items-center rounded-md"
             onClick={handleCopyText}
           >
-            <Copy />
+            {isCopied ? <Check /> : <Copy />}
           </button>
         </div>
         <Separator className="w-full mt-4" />
