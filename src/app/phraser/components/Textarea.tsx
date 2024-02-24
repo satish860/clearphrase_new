@@ -37,12 +37,10 @@ const TextBox = () => {
     const pastedText = e.clipboardData.getData("text/plain");
     console.log(pastedText);
     setText(pastedText);
-    handleParaphrase(selectedTone);
   };
 
   const handleToneSelect = (tone: string) => {
     setSelectedTone(tone);
-    handleParaphrase(tone);
   };
 
   const handleParaphrase = (tone: string) => {
