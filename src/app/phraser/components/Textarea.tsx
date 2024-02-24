@@ -45,7 +45,7 @@ const TextBox = () => {
   };
 
   return (
-    <div className="w-[90%] h-full  bg-white">
+    <div className="w-[90%] md:h-full h-[90%]  bg-white">
       <div className="w-full h-[15%] pt-4 hidden md:block">
         <div className="flex justify-between items-center pl-4 pr-4">
           <div className="space-x-8">
@@ -154,14 +154,14 @@ const TextBox = () => {
           </div>
         </div>
       </div>
-      <div className="w-full md:h-[75%] h-full flex flex-col md:flex-row gap-1 p-2">
+      <div className="w-full h-[75%] flex flex-col md:flex-row gap-1 p-2">
         <Textarea
           className="md:w-[50%] h-[50%] md:h-full w-full"
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
         <Textarea
-          className="md:w-[50%] h-[50%] md:h-full w-full"
+          className="md:w-[50%] h-[40%] md:h-full w-full"
           value={completion}
           readOnly={true}
           onChange={(e) => setText2(e.target.value)}

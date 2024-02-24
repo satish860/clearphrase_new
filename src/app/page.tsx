@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <div className="w-full h-full p-2">
       <div className="flex justify-between items-center">
-        <img src="/aj_logo_21_09_2023 2 (3).svg" className="w-20 h-10"></img>
+        <span className="w-20 h-10">Clearphraser.io</span>
         {userId ? (
           <UserButton afterSignOutUrl="/" />
         ) : (
@@ -127,7 +127,7 @@ export default function Home() {
       <div className="h-20 w-full flex justify-between items-center pl-4 pr-4">
         <div className="flex items-center justify-center">
           <Copyright className="w-4 h-4" />
-          <span>2023 Askjunior.ai . All rights reserved</span>
+          <span>2023 Clearphrase.io . All rights reserved</span>
         </div>
         <div className="flex justify-center items-center gap-4">
           <div className="w-8 h-8 rounded-full bg-gray-100 flex justify-center items-center">

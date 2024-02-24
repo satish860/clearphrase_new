@@ -8,7 +8,7 @@ const Pharser = () => {
        <h1 className="text-xl">ClearPhrase.io</h1>
         <UserButton />
       </div>
-      <div className="flex justify-center items-center w-full h-[80%] pt-4">
+      <div className="flex justify-center items-center w-full h-[90%] md:h-[80%] pt-4">
         <TextBox />
       </div>
     </div>
