@@ -4,14 +4,6 @@ import { Textarea } from "@/components/ui/textarea";
 import React, { useState } from "react";
 import { CheckIcon, Copy } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { useCompletion } from "ai/react";
 import { ChevronsDown } from 'lucide-react';
 import { cn } from "@/lib/utils";
@@ -133,6 +125,7 @@ const TextBox = () => {
                       onSelect={(currentValue) => {
                         setValue(currentValue === value ? "" : currentValue);
                         setOpen(false);
+                        handleToneSelect(currentValue);
                       }}
                     >
                       {framework.label}
