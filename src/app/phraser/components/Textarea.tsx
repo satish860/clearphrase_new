@@ -138,13 +138,27 @@ const TextBox = () => {
         />
       </div>
       <div className="w-full flex items-center justify-center gap-10 pt-2">
-        <Button className="bg-green-500" onClick={handleParaphrase}>
-          Paraphrase
+        <Button
+          className="bg-green-500 w-22 h-10 flex justify-center items-center"
+          onClick={() => handleParaphrase(selectedTone)}
+          disabled={isLoading}
+        >
+          {isLoading ? (
+            <img
+              src="/Rolling-1s-200px.svg"
+              alt="Loading..."
+              className="w-full h-6"
+            />
+          ) : (
+            <>
+              <span className="w-full text-center">Paraphrase</span>
+            </>
+          )}
         </Button>
         <Button
           variant={"secondary"}
           onClick={handleClearAll}
-          className="border border-black"
+          className="border border-black w-22 h-10 flex justify-center items-center" // Apply same size for consistency
         >
           Clear all
         </Button>
