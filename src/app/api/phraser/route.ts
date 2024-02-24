@@ -171,15 +171,15 @@ export async function POST(req: NextRequest) {
 
   let promptTemplate = "";
 
-  if (Tone === "Fluency") {
+  if (Tone === "fluency") {
     promptTemplate = FluencyTemplate;
-  } else if (Tone === "Formal") {
+  } else if (Tone === "formal") {
     promptTemplate = FormalTemplate;
-  } else if (Tone === "Simple") {
+  } else if (Tone === "simple") {
     promptTemplate = SimpleTemplate;
-  } else if (Tone === "Creative") {
+  } else if (Tone === "creative") {
     promptTemplate = CreativeTemplate;
-  } else if (Tone === "Summarize") {
+  } else if (Tone === "summarize") {
     promptTemplate = SummarizeTemplate;
   } else {
     promptTemplate = standardTemplate;
@@ -192,13 +192,6 @@ export async function POST(req: NextRequest) {
     });
 
   const stream = GoogleGenerativeAIStream(response);
-  return new StreamingTextResponse(stream);
 
-  // const response = await openai.createChatCompletion({
-  //   model: "gpt-3.5-turbo",
-  //   stream: true,
-  //   messages: [{ role: "system", content: promptTemplate }],
-  // });
-  // const stream = OpenAIStream(response);
-  // return new StreamingTextResponse(stream);
+  return new StreamingTextResponse(stream);
 }

@@ -15,34 +15,46 @@ import {
 import { useCompletion } from "ai/react";
 
 const TextBox = () => {
-  const [text, setText] = useState('');
+  const [text, setText] = useState("");
   const [selectedTone, setSelectedTone] = useState("Standard");
-  const [text2, setText2] = useState('');
+  const [text2, setText2] = useState("");
   const { complete, completion, isLoading, setCompletion } = useCompletion({
     api: "/api/phraser",
   });
 
   const handleToneSelect = (tone: string) => {
     setSelectedTone(tone);
+    handleParaphrase(tone);
   };
 
-  const handleParaphrase = () => {
+  const handleParaphrase = (tone: string) => {
     console.log(text);
-    console.log(selectedTone);
+    console.log(tone);
     complete(
       JSON.stringify({
         text: text,
-        tone: selectedTone,
+        tone: tone,
       })
     );
   };
+
   const handleClearAll = () => {
-    setText('');
-    setCompletion('');
+    setText("");
+    setCompletion("");
   };
+
   const handleCopyText = () => {
     navigator.clipboard.writeText(completion);
   };
+
+  const toneOptions = [
+    { value: "standard", label: "Standard" },
+    { value: "fluency", label: "Fluency" },
+    { value: "formal", label: "Formal" },
+    { value: "simple", label: "Simple" },
+    { value: "creative", label: "Creative" },
+    { value: "summarize", label: "Summarize" },
+  ];
 
   return (
     <div className="w-[90%] md:h-full h-[90%]  bg-white">
@@ -50,60 +62,18 @@ const TextBox = () => {
         <div className="flex justify-between items-center pl-4 pr-4">
           <div className="space-x-8">
             <span>Tones:</span>
-            <button
-              onClick={() => handleToneSelect("Standard")}
-              style={{
-                borderBottom:
-                  selectedTone === "Standard" ? "2px solid green" : "none",
-              }}
-            >
-              Standard
-            </button>
-            <button
-              onClick={() => handleToneSelect("Fluency")}
-              style={{
-                borderBottom:
-                  selectedTone === "Fluency" ? "2px solid green" : "none",
-              }}
-            >
-              Fluency
-            </button>
-            <button
-              onClick={() => handleToneSelect("Formal")}
-              style={{
-                borderBottom:
-                  selectedTone === "Formal" ? "2px solid green" : "none",
-              }}
-            >
-              Formal
-            </button>
-            <button
-              onClick={() => handleToneSelect("Simple")}
-              style={{
-                borderBottom:
-                  selectedTone === "Simple" ? "2px solid green" : "none",
-              }}
-            >
-              Simple
-            </button>
-            <button
-              onClick={() => handleToneSelect("Creative")}
-              style={{
-                borderBottom:
-                  selectedTone === "Creative" ? "2px solid green" : "none",
-              }}
-            >
-              Creative
-            </button>
-            <button
-              onClick={() => handleToneSelect("Summarize")}
-              style={{
-                borderBottom:
-                  selectedTone === "Summarize" ? "2px solid green" : "none",
-              }}
-            >
-              Summarize
-            </button>
+            {toneOptions.map(({ value, label }) => (
+              <button
+                key={value}
+                onClick={() => handleToneSelect(value)}
+                style={{
+                  borderBottom:
+                    selectedTone === value ? "2px solid green" : "none",
+                }}
+              >
+                {label}
+              </button>
+            ))}
           </div>
           <button
             className="w-10 h-10 bg-gray-200 flex justify-center items-center rounded-md"
@@ -168,10 +138,17 @@ const TextBox = () => {
         />
       </div>
       <div className="w-full flex items-center justify-center gap-10 pt-2">
-        <Button className="bg-green-500" onClick={handleParaphrase}>
+        <Button
+          className="bg-green-500"
+          onClick={() => handleParaphrase(selectedTone)}
+        >
           Paraphrase
         </Button>
-        <Button variant={"secondary"} onClick={handleClearAll} className="border border-black">
+        <Button
+          variant={"secondary"}
+          onClick={handleClearAll}
+          className="border border-black"
+        >
           Clear all
         </Button>
       </div>
