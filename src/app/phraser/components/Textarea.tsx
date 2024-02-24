@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import React, { useState } from "react";
-import { Copy } from "lucide-react";
+import { CheckIcon, Copy } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import {
   DropdownMenu,
@@ -13,11 +13,27 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useCompletion } from "ai/react";
+import { ChevronsDown } from 'lucide-react';
+import { cn } from "@/lib/utils";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+} from "@/components/ui/command";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
 const TextBox = () => {
   const [text, setText] = useState("");
   const [selectedTone, setSelectedTone] = useState("Standard");
   const [text2, setText2] = useState("");
+  const [open, setOpen] = React.useState(false)
+  const [value, setValue] = React.useState("")
   const { complete, completion, isLoading, setCompletion } = useCompletion({
     api: "/api/phraser",
   });
@@ -87,35 +103,53 @@ const TextBox = () => {
 
       <div className="block md:hidden">
         <div className="flex flex-row justify-center items-center p-2 gap-32">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline">Select</Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56">
-              <DropdownMenuSeparator />
-              <DropdownMenuGroup>
-                <DropdownMenuItem onClick={() => handleToneSelect("Standard")}>
-                  Standard
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => handleToneSelect("Fluency")}>
-                  Fluency
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => handleToneSelect("Formal")}>
-                  Formal
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => handleToneSelect("Simple")}>
-                  Simple
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => handleToneSelect("Creative")}>
-                  Creative
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => handleToneSelect("Summarize")}>
-                  Summarize
-                </DropdownMenuItem>
-              </DropdownMenuGroup>
-              <DropdownMenuSeparator />
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <Popover open={open} onOpenChange={setOpen}>
+            <PopoverTrigger asChild>
+              <Button
+                variant="outline"
+                role="combobox"
+                aria-expanded={open}
+                className="w-[200px] justify-between"
+              >
+                {value
+                  ? toneOptions.find((framework) => framework.value === value)
+                      ?.label
+                  : "Select framework..."}
+                <ChevronsDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-[200px] p-0">
+              <Command>
+                <CommandInput
+                  placeholder="Search framework..."
+                  className="h-9"
+                />
+                <CommandEmpty>No framework found.</CommandEmpty>
+                <CommandGroup>
+                  {toneOptions.map((framework) => (
+                    <CommandItem
+                      key={framework.value}
+                      value={framework.value}
+                      onSelect={(currentValue) => {
+                        setValue(currentValue === value ? "" : currentValue);
+                        setOpen(false);
+                      }}
+                    >
+                      {framework.label}
+                      <CheckIcon
+                        className={cn(
+                          "ml-auto h-4 w-4",
+                          value === framework.value
+                            ? "opacity-100"
+                            : "opacity-0"
+                        )}
+                      />
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+              </Command>
+            </PopoverContent>
+          </Popover>
           <div
             className="w-10 h-10 bg-gray-100 flex justify-center items-center rounded-md"
             onClick={handleCopyText}
@@ -158,7 +192,7 @@ const TextBox = () => {
         <Button
           variant={"secondary"}
           onClick={handleClearAll}
-          className="border border-black w-22 h-10 flex justify-center items-center" // Apply same size for consistency
+          className="border border-black w-22 h-10 flex justify-center items-center"
         >
           Clear all
         </Button>
