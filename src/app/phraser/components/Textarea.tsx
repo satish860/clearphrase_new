@@ -118,17 +118,17 @@ const TextBox = () => {
                 {value
                   ? toneOptions.find((framework) => framework.value === value)
                       ?.label
-                  : "Select framework..."}
+                  : "Select tone..."}
                 <ChevronsDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
               </Button>
             </PopoverTrigger>
             <PopoverContent className="w-[200px] p-0">
               <Command>
                 <CommandInput
-                  placeholder="Search framework..."
+                  placeholder="Search tone..."
                   className="h-9"
                 />
-                <CommandEmpty>No framework found.</CommandEmpty>
+                <CommandEmpty>No tone found.</CommandEmpty>
                 <CommandGroup>
                   {toneOptions.map((framework) => (
                     <CommandItem
