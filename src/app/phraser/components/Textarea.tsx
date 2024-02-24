@@ -30,6 +30,15 @@ const TextBox = () => {
     api: "/api/phraser",
   });
 
+  const onPaste = (e: React.ClipboardEvent<HTMLTextAreaElement>) => {
+    e.preventDefault(); 
+    const pastedText = e.clipboardData.getData('text/plain');
+    console.log(pastedText);
+    setText(pastedText);
+    handleParaphrase(selectedTone);
+  }
+
+
   const handleToneSelect = (tone: string) => {
     setSelectedTone(tone);
     handleParaphrase(tone);
@@ -156,7 +165,7 @@ const TextBox = () => {
           className="md:w-[50%] h-[50%] md:h-full w-full"
           value={text}
           onChange={(e) => setText(e.target.value)}
-          onPaste={(e) => setText(e.clipboardData.getData('text/plain'))}
+          onPaste={onPaste}
         />
         <Textarea
           className="md:w-[50%] h-[40%] md:h-full w-full"
