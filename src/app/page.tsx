@@ -23,13 +23,13 @@ export default function Home() {
           </div>
         )}
       </div>
-      <div className="flex flex-col h-[600px]  justify-center items-center space-y-10">
+      <div className="flex flex-col md:h-[600px] h-full  justify-center items-center space-y-10 pt-4 md:pt-0">
         <div className="space-y-2 text-center">
-          <h1 className="text-6xl font-sans">Try Clearphrase today</h1>
-          <h1 className="text-6xl font-sans text-green-400">
+          <h1 className="md:text-6xl font-sans text-3xl">Try Clearphrase today</h1>
+          <h1 className="md:text-6xl font-sans text-green-400 text-3xl">
             Take control of your
           </h1>
-          <h1 className="text-6xl font-sans text-green-400">
+          <h1 className="md:text-6xl font-sans text-green-400 text-3xl">
             writing&#39;s tone!
           </h1>
         </div>
@@ -47,43 +47,43 @@ export default function Home() {
           <a>learn more</a>
         </div>
       </div>
-      <div className="h-52 w-full flex justify-center items-center pt-2 gap-8">
-        <div className="h-full w-[30%] space-y-4">
+      <div className="md:h-52 h-full w-full flex flex-col md:flex-row justify-center items-center pt-8 md:pt-2 gap-8">
+        <div className="h-full md:w-[30%] w-full space-y-4 flex flex-col justify-center items-center md:justify-start md:items-start">
           <LayoutDashboard className="text-green-400 w-10 h-10" />
           <h1>Web Interface</h1>
-          <h2>
+          <h2 className="text-center md:text-left">
             Clearphrase&#39;s intuitive web interface makes it easy to adjust
             the tone of your writing from any device with an internet
             connection.
           </h2>
         </div>
-        <div className="h-full w-[30%] space-y-4">
+        <div className="h-full md:w-[30%] w-full space-y-4 flex flex-col justify-center items-center md:justify-start md:items-start">
           <Chrome className="text-green-400 w-10 h-10" />
           <h1>Web Interface</h1>
-          <h2>
+          <h2 className="text-center md:text-left">
             With Clearphrase&#39;s Chrome extension, you can seamlessly edit
             your tone without ever leaving your browser.
           </h2>
         </div>
-        <div className="h-full w-[30%] space-y-4">
+        <div className="h-full md:w-[30%] w-full space-y-4 flex flex-col justify-center items-center md:justify-start md:items-start">
           <Tv2 className="text-green-400 w-10 h-10" />
           <h1>Web Interface</h1>
-          <h2>
+          <h2 className="text-center md:text-left">
             Clearphrase&#39;s context menu integration on Windows lets you
             quickly adjust your tone within your favourite writing apps.
           </h2>
         </div>
       </div>
-      <div className="w-full h-[450px] flex flex-col justify-center items-center pt-4 space-y-16 bg-gray-100">
+      <div className="w-full md:h-[450px] h-full flex flex-col justify-center items-center pt-4 space-y-16 bg-gray-100">
         <div className="space-y-2 flex flex-col items-center">
           <h1 className="text-4xl font-bold">Our Users Speak</h1>
           <p className="text-base">
             We have been working with users from various fields
           </p>
         </div>
-        <div className="flex justify-center items-center w-full h-full gap-8">
-          <div className="w-[30%] h-full flex flex-col justify-center items-center space-y-6">
-            <div className="w-full h-[60%] flex flex-col justify-center items-center bg-white rounded-md text-sm">
+        <div className="flex md:flex-row flex-col justify-center items-center w-full h-full gap-8">
+          <div className="md:w-[30%] w-[90%] h-full flex flex-col justify-center items-center space-y-6">
+            <div className="w-full md:h-[60%] h-40 flex flex-col justify-center items-center bg-white rounded-md text-sm">
               <h1 className="font-bold text-lg pb-4">Great Job!</h1>
               <p>The mode option appears to be a cool</p>
               <p>feature that allows for customized user</p>
@@ -94,8 +94,8 @@ export default function Home() {
               className="rounded-full h-10 w-10"
             ></img>
           </div>
-          <div className="w-[30%] h-full flex flex-col justify-center items-center space-y-6">
-            <div className="w-full h-[60%] flex flex-col justify-center items-center bg-white rounded-md text-sm">
+          <div className="md:w-[30%] w-[90%] h-full flex flex-col justify-center items-center space-y-6">
+            <div className="w-full md:h-[60%] h-40 flex flex-col justify-center items-center bg-white rounded-md text-sm">
               <h1 className="font-bold  text-lg  pb-4">
                 Intuitive Replacement
               </h1>
@@ -108,14 +108,14 @@ export default function Home() {
               className="rounded-full h-10 w-10"
             ></img>
           </div>
-          <div className="w-[30%] h-full flex flex-col justify-center items-center space-y-6">
-            <div className="w-full h-[60%] flex flex-col justify-center items-center bg-white rounded-md text-sm">
+          <div className="md:w-[30%] w-[90%] h-full flex flex-col justify-center items-center space-y-6">
+            <div className="w-full md:h-[60%] h-40 flex flex-col justify-center items-center bg-white rounded-md text-sm">
               <h1 className="font-bold  text-lg  pb-4">
                 Confident Communication
               </h1>
-              <p>ClearPhrase makes it easier for anyone to communicate</p>
-              <p>effectively and efficiently, regardless of their writing</p>
-              <p>experience or proficiency.</p>
+              <p>ClearPhrase makes it easier for anyone to </p>
+              <p>communicate effectively and efficiently, regardless of </p>
+              <p>their writingexperience or proficiency.</p>
             </div>
             <img
               src="/blank-profile-picture-973460_1280.webp"
@@ -124,10 +124,10 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="h-20 w-full flex justify-between items-center pl-4 pr-4">
+      <div className="h-20 w-full flex flex-col-reverse md:flex-row justify-between items-center pl-4 pr-4 pt-2">
         <div className="flex items-center justify-center">
           <Copyright className="w-4 h-4" />
-          <span>2023 Clearphrase.io . All rights reserved</span>
+          <span >2023 Clearphrase . All rights reserved</span>
         </div>
         <div className="flex justify-center items-center gap-4">
           <div className="w-8 h-8 rounded-full bg-gray-100 flex justify-center items-center">
