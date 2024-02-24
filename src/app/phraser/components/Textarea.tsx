@@ -15,9 +15,9 @@ import {
 import { useCompletion } from "ai/react";
 
 const TextBox = () => {
-  const [text, setText] = useState('');
+  const [text, setText] = useState("");
   const [selectedTone, setSelectedTone] = useState("Standard");
-  const [text2, setText2] = useState('');
+  const [text2, setText2] = useState("");
   const { complete, completion, isLoading, setCompletion } = useCompletion({
     api: "/api/phraser",
   });
@@ -37,8 +37,8 @@ const TextBox = () => {
     );
   };
   const handleClearAll = () => {
-    setText('');
-    setCompletion('');
+    setText("");
+    setCompletion("");
   };
   const handleCopyText = () => {
     navigator.clipboard.writeText(completion);
@@ -168,10 +168,28 @@ const TextBox = () => {
         />
       </div>
       <div className="w-full flex items-center justify-center gap-10 pt-2">
-        <Button className="bg-green-500" onClick={handleParaphrase}>
-          Paraphrase
+        <Button
+          className="bg-green-500 w-22 h-10"
+          onClick={handleParaphrase}
+          disabled={isLoading}
+        >
+          {isLoading ? (
+            <div>
+              <img
+                src="/Rolling-1s-200px.svg"
+                alt="Loading..."
+                className="w-6 h-6"
+              />
+            </div>
+          ) : (
+            "Paraphrase"
+          )}
         </Button>
-        <Button variant={"secondary"} onClick={handleClearAll} className="border border-black">
+        <Button
+          variant={"secondary"}
+          onClick={handleClearAll}
+          className="border border-black"
+        >
           Clear all
         </Button>
       </div>
