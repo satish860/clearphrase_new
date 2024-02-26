@@ -15,6 +15,12 @@ import { Textarea } from "@/components/ui/textarea";
 export default function Home() {
   const words = [
     {
+      text: "Summarize",
+    },
+    {
+      text: "Any",
+    },
+    {
       text: "Document",
     },
   ];
@@ -22,41 +28,25 @@ export default function Home() {
     <div className="h-full w-full dark:bg-black bg-white  dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative flex justify-center">
       <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
       <div className="relative z-20 bg-clip-text w-full">
-        <div className="flex justify-between w-full items-center p-4">
-          <div>
-            <span className="font-bold text-xl">Clearpharse.io</span>
-          </div>
-          <div className="flex gap-8">
-            <a>Chat with pdf</a>
-            <a>Browser extension</a>
-            <a>Features</a>
-            <a>Pricing</a>
-            <a>Products</a>
-          </div>
-          <div className="flex gap-4">
-            <Button>Sign in</Button>
-            <Button>Sign up</Button>
-          </div>
+        <div className="flex justify-center w-full items-center p-4">
+          <span className="font-bold text-xl">Clearpharse.io</span>
         </div>
         <div className="h-[500px] w-full flex flex-col justify-center items-center">
-          <div className="flex justify-center items-center gap-3">
-            <h1 className="flex justify-center items-center font-bold text-5xl mb-3">
-              Summarize Any
-            </h1>
-            <TypewriterEffectSmooth words={words} />
-          </div>
+          <TypewriterEffectSmooth words={words} />
+
           <h1 className="font-bold text-5xl">In a click</h1>
-          <div className="mt-4 text-center">
-            <p>
-              TLDR This helps you summarize any piece of text into concise, easy
-              to digest content
-            </p>
-            <p>so you can free yourself from information overload.</p>
-          </div>
-          <a className="mt-8 w-28 h-10 bg-black text-white flex justify-center items-center rounded-md " href="#startdiv">Start for free</a>
+          <a
+            className="mt-8 w-28 h-10 bg-black text-white flex justify-center items-center rounded-md "
+            href="#startdiv"
+          >
+            Start for free
+          </a>
         </div>
         <div className="h-[500px]"></div>
-        <div className="h-[500px] flex flex-col items-center space-y-6" id="startdiv">
+        <div
+          className="h-[500px] flex flex-col items-center space-y-6"
+          id="startdiv"
+        >
           <h1 className="font-bold text-3xl">
             Enter an Article URL or paste your Text
           </h1>
