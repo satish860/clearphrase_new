@@ -95,18 +95,27 @@ const TextBox = () => {
               </button>
             ))}
           </div>
-          <button
-            className="w-10 h-10 bg-gray-200 flex justify-center items-center rounded-md"
-            onClick={handleCopyText}
-          >
-            {isCopied ? <Check /> : <Copy />}
-          </button>
+          <div className="flex items-center gap-4">
+            <button
+              className="w-10 h-10 bg-gray-200 flex justify-center items-center rounded-md"
+              onClick={handleCopyText}
+            >
+              {isCopied ? <Check /> : <Copy />}
+            </button>
+            <Button
+              variant={"secondary"}
+              onClick={handleClearAll}
+              className="border border-black w-22 h-10 flex justify-center items-center"
+            >
+              Clear all
+            </Button>
+          </div>
         </div>
         <Separator className="w-full mt-4" />
       </div>
 
       <div className="block md:hidden">
-        <div className="flex flex-row justify-center items-center p-2 gap-32">
+        <div className="flex flex-row justify-center items-center p-2 gap-4">
           <Popover open={open} onOpenChange={setOpen}>
             <PopoverTrigger asChild>
               <Button
@@ -124,10 +133,7 @@ const TextBox = () => {
             </PopoverTrigger>
             <PopoverContent className="w-[200px] p-0">
               <Command>
-                <CommandInput
-                  placeholder="Search tone..."
-                  className="h-9"
-                />
+                <CommandInput placeholder="Search tone..." className="h-9" />
                 <CommandEmpty>No tone found.</CommandEmpty>
                 <CommandGroup>
                   {toneOptions.map((framework) => (
@@ -155,11 +161,20 @@ const TextBox = () => {
               </Command>
             </PopoverContent>
           </Popover>
-          <div
-            className="w-10 h-10 bg-gray-100 flex justify-center items-center rounded-md"
-            onClick={handleCopyText}
-          >
-            <Copy />
+          <div className="flex items-center gap-2">
+            <div
+              className="w-10 h-10 bg-gray-100 flex justify-center items-center rounded-md"
+              onClick={handleCopyText}
+            >
+              <Copy />
+            </div>
+            <Button
+              variant={"secondary"}
+              onClick={handleClearAll}
+              className="border border-black w-22 h-10 flex justify-center items-center"
+            >
+              Clear all
+            </Button>
           </div>
         </div>
       </div>
@@ -194,13 +209,6 @@ const TextBox = () => {
               <span className="w-full text-center">Paraphrase</span>
             </>
           )}
-        </Button>
-        <Button
-          variant={"secondary"}
-          onClick={handleClearAll}
-          className="border border-black w-22 h-10 flex justify-center items-center"
-        >
-          Clear all
         </Button>
       </div>
     </div>
